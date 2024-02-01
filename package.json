@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "dev": "node --import tsx --env-file=.env --watch-path ./src ./src/main.ts",
+    "dev": "DEBUG=* node --import tsx --env-file=.env --watch-path ./src ./src/main.ts",
     "build": "tsc",
     "check": "npx @biomejs/biome check --apply ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,12 +13,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "debug": "^4.3.4",
     "mongobubble": "^2.0.3",
     "mongodb": "^6.3.0",
     "tsx": "^4.7.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
+    "@types/debug": "^4.1.12",
     "@types/node": "20.11.0",
     "typescript": "5.3.3"
   }
