@@ -1,12 +1,18 @@
-export default {
-	mongo: {
-		protocolo: "mongodb+srv:",
-		usuario: "helios",
-		senha: "b3EYEg5Xj2jw6U3c85o7L6CwWQ2Q8F9tWxJEPK70d1HsW5eAxDXbAQmUiiL7zOU",
-		servidor: "elmd-aurora-01.9txz8.mongodb.net",
-		banco: "aurora-bbx-dev",
-		get url(): string {
-			return `${this.protocolo}://${this.usuario}:${this.senha}@${this.servidor}`;
-		},
-	},
+import assert from "node:assert";
+
+assert(process.env.DB_MONGO_PROTOCOLO, "env DB_MONGO_PROTOCOLO nao informado");
+assert(process.env.DB_MONGO_USUARIO, "env DB_MONGO_USUARIO nao informado");
+assert(process.env.DB_MONGO_SENHA, "env DB_MONGO_SENHA nao informado");
+assert(process.env.DB_MONGO_SERVIDOR, "env DB_MONGO_SERVIDOR nao informado");
+assert(process.env.DB_MONGO_BANCO, "env DB_MONGO_BANCO nao informado");
+
+export const mongoConfig = {
+  protocolo: process.env.DB_MONGO_PROTOCOLO,
+  usuario: process.env.DB_MONGO_USUARIO,
+  senha: process.env.DB_MONGO_SENHA,
+  servidor: process.env.DB_MONGO_SERVIDOR,
+  banco: process.env.DB_MONGO_BANCO,
+  get uri() {
+    return `${this.protocolo}://${this.usuario}:${this.senha}@${this.servidor}`;
+  },
 };
