@@ -1,5 +1,5 @@
 import { UsuarioService } from "./services/usuario";
-import { logErro, logFim, logInicio } from "./utils/logs";
+import { logErro, logFim, logFimErro, logInicio } from "./utils/logs";
 
 const email = "desenvolvedorads@eletromidia.com.br";
 
@@ -14,14 +14,14 @@ export class App {
       if (!usuario) {
         throw new Error("Usuario nao encontrado!");
       }
-      console.info("Usuario:", usuario);
-      logFim("OK", new Date());
+      console.info("\nUsuario:", usuario, "\n");
+      logFim(new Date());
     } catch (e) {
       const erro = e instanceof Error ? e : undefined;
       logErro(
         `${erro?.name || ""} ${erro?.message || "Erro inesperado ocorreu"}`,
       );
-      logFim("COM ERRO", new Date());
+      logFimErro(new Date());
     }
   }
 }

@@ -10,11 +10,11 @@ export function obterConexao() {
   if (conexao) {
     return conexao;
   }
-  logInfo("criando conexao");
   conexao = new MongoClient(mongoConfig.uri);
+  logInfo("obterConexao | OK");
 }
 
 export async function fecharConexao() {
-  logInfo("fechando conexao");
   await conexao.close();
+  logInfo("fecharConexao | OK");
 }
