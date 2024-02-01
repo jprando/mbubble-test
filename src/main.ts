@@ -1,4 +1,5 @@
 import { App } from "./app";
-import * as db from "./db";
+import { usuarios } from "./db";
+import { UsuarioService } from "./services";
 
-new App(db).start();
+new App(new UsuarioService(usuarios)).start();

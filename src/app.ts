@@ -1,23 +1,15 @@
-import type { MongoBubble } from "mongobubble";
-import type { Usuario } from "./db";
+import { UsuarioService } from "./services/usuario";
 
-const email = "desenvolvedorads@eletromidia1.com.br";
-
-export type AppDb = {
-  usuarios: MongoBubble<Usuario, string>;
-};
+const email = "desenvolvedorads@eletromidia.com.br";
 
 export class App {
-  private readonly db: AppDb;
-
-  constructor(db: AppDb) {
-    this.db = db;
+  constructor(private readonly usuarios: UsuarioService) {
     console.info("app:inicio");
   }
 
   async start() {
     try {
-      const usuario = await this.obterUsuario(email);
+      const usuario = await this.usuarios.obterPorEmail(email);
       if (!usuario) {
         throw new Error("Usuario nao encontrado!");
       }
@@ -32,17 +24,5 @@ export class App {
       );
       console.info("app:fim | COM ERRO");
     }
-  }
-
-  async obterUsuario(email: string): Promise<Usuario | undefined> {
-    console.info(`obterUsuario:info | obtendo informacoes do usuario "${email}"`);
-    const usuarioDb = await this.db.usuarios.get(email);
-    if (!usuarioDb) {
-      console.info("obterUsuario:warn | Usuario nao encontrado");
-      return;
-    }
-    console.info(`obterUsuario:info | OK`);
-    const { _id, nome, empresa } = usuarioDb;
-    return { _id, nome, empresa };
   }
 }
