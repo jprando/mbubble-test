@@ -1,5 +1,7 @@
 {
-    "debug.console.closeOnEnd": true,
-    "debug.openExplorerOnEnd": true,
-    "debug.openDebug": "openOnSessionStart"
+  "debug.console.closeOnEnd": true,
+  "debug.openExplorerOnEnd": true,
+  "debug.openDebug": "openOnSessionStart",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
 }
