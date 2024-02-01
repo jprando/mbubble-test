@@ -1,6 +1,7 @@
 import type { IEntity } from "@mongobubble/core";
 import { EntityWithLifecycle, MongoBubble } from "mongobubble";
 import { ObjectId } from "mongodb";
+import { obterConexao } from "./conexao";
 import { mongoConfig } from "./config";
 
 export interface IUsuario extends IEntity<string> {
@@ -11,7 +12,8 @@ export interface IUsuario extends IEntity<string> {
 export type Usuario = EntityWithLifecycle<IUsuario, string>;
 
 export const usuarios = new MongoBubble<Usuario, string>({
-  uri: mongoConfig.uri,
+  // uri: mongoConfig.uri,
+  client: obterConexao(),
   db: mongoConfig.banco,
   collectionName: "usuarios",
 });
