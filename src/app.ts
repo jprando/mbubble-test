@@ -1,10 +1,11 @@
 import { UsuarioService } from "./services/usuario";
+import { logErro, logFim, logInicio } from "./utils/logs";
 
 const email = "desenvolvedorads@eletromidia.com.br";
 
 export class App {
   constructor(private readonly usuarios: UsuarioService) {
-    console.info("app:inicio");
+    logInicio(new Date());
   }
 
   async start() {
@@ -13,16 +14,14 @@ export class App {
       if (!usuario) {
         throw new Error("Usuario nao encontrado!");
       }
-      console.info("app:info | Usuario:", usuario);
-      console.info("app:fim | OK");
+      console.info("Usuario:", usuario);
+      logFim("OK", new Date());
     } catch (e) {
       const erro = e instanceof Error ? e : undefined;
-      console.error(
-        "app:erro |",
-        erro?.name || "",
-        erro?.message || "Erro inesperado ocorreu",
+      logErro(
+        `${erro?.name || ""} ${erro?.message || "Erro inesperado ocorreu"}`,
       );
-      console.info("app:fim | COM ERRO");
+      logFim("COM ERRO", new Date());
     }
   }
 }
