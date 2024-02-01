@@ -1,0 +1,5 @@
+{
+    "debug.console.closeOnEnd": true,
+    "debug.openExplorerOnEnd": true,
+    "debug.openDebug": "openOnSessionStart"
+}
