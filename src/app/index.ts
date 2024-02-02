@@ -1,13 +1,15 @@
-import type { UsuarioService } from "../services/usuario";
-import { exibirUsuario } from "./exibirUsuario";
+import { IUsuarioService } from "../services/tipos";
+import { exibirUsuario, iniciar } from "./functions";
 import { log } from "./log";
-import { start } from "./start";
+import { AppServices } from "./tipos";
 
 export class App {
-  readonly start = start;
+  readonly iniciar = iniciar;
   readonly exibirUsuario = exibirUsuario;
+  readonly usuarios: IUsuarioService;
 
-  constructor(readonly usuarios: UsuarioService) {
+  constructor(services: AppServices) {
+    this.usuarios = services.usuarios;
     log("inicio");
   }
 }
