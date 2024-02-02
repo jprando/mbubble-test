@@ -12,6 +12,6 @@ export async function start(this: App) {
     );
   }
   finally {
-    log(new Date(), "fim");
+    log("fim");
   }
 }

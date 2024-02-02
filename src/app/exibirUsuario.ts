@@ -1,4 +1,4 @@
-import { App } from ".";
+import type { App } from ".";
 
 export async function exibirUsuario(this:App, email: string) {
   const usuario = await this.usuarios.obterPorEmail(email);

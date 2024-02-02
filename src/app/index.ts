@@ -1,4 +1,4 @@
-import { UsuarioService } from "../services/usuario";
+import type { UsuarioService } from "../services/usuario";
 import { exibirUsuario } from "./exibirUsuario";
 import { log } from "./log";
 import { start } from "./start";
@@ -8,6 +8,6 @@ export class App {
   readonly exibirUsuario = exibirUsuario;
 
   constructor(readonly usuarios: UsuarioService) {
-    log(new Date(), "inicio");
+    log("inicio");
   }
 }

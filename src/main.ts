@@ -1,7 +1,7 @@
 import { App } from "./app";
-import { fecharConexao, usuarios } from "./db";
+import { fecharConexao } from "./db";
 import { UsuarioService } from "./services";
 
-new App(new UsuarioService(usuarios))
+new App(new UsuarioService())
   .start()
   .finally(fecharConexao);
