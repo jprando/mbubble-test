@@ -18,7 +18,7 @@ export class UsuarioService implements IUsuarioService {
     logInfo(`obterPorEmail | ${email}`);
     const usuario = await this.usuarios.get(email);
     if (!usuario) {
-      logWarn("Usuario nao encontrado");
+      logWarn("obterPorEmail | Usuario nao encontrado");
       return;
     }
     logInfo("obterPorEmail | OK");
